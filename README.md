@@ -4,11 +4,7 @@ Horse Racing - Miniprojekt
 ## Introduktion
 Det er et simple væddeløbshest. 
 
-## Funktionaliteter
-
-### Betting
-
-**GAME**
-- Weather
-- Horses
-- 
+## Further implementation
+- webpage
+- test af flask
+- daily setup of game
