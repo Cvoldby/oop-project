@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horse Racing Game Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">    
+</head>
+<body>
+    <div class="container">
+        <div class="countdown" id="countdown"></div>
+        <div class="menu">
+            <h1>Horse Racing Game Menu</h1>
+            <ul>
+                <li><a href="#race">Race</a></li>
+                <li><a href="#betting">Betting</a></li>
+                <li><a href="#stables">Stables</a></li>
+                <li><a href="#chat">Chat</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="../static/horse_race.gif" alt="Horse Racing GIF" width="300">
+        </div>
+    </div>
+
+    <script>
+        // Set the countdown date (in UTC)
+        const countdownDate = new Date('2024-12-24T18:00:00Z').getTime();
+
+        // Update the countdown every second
+        const countdownElement = document.getElementById('countdown');
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            // Calculate days, hours, minutes, and seconds
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the countdown
+            countdownElement.innerHTML = `Countdown to next race: ${hours}h ${minutes}m ${seconds}s`;
+
+            // If the countdown is over, display a message
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                countdownElement.innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

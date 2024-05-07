@@ -1,0 +1,38 @@
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS games;
+DROP TABLE IF EXISTS horses;
+DROP TABLE IF EXISTS bets;
+
+CREATE TABLE user (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL
+); 
+
+
+CREATE TABLE bets (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    better_id INTEGER NOT NULL,
+    game_id INTEGER NOT NULL,
+    horse_id INTEGER NOT,
+    bet_amount INTEGER NOT NULL,
+    
+    
+    FOREIGN KEY (better_id) REFERENCES user (id),
+    FOREIGN KEY (game_id) REFERENCES games (id),
+    FOREIGN KEY (horse_id) REFERENCES horses (id),
+)
+
+CREATE TABLE games (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    title TEXT NOT NULL
+);
+
+CREATE TABLE horses (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    age INTEGER NOT NULL DEFAULT 2,
+    name VARCHAR(24),
+    speed INTEGER NOT NULL DEFAULT 2,
+    accelaration INTEGER NOT NULL 
+)
