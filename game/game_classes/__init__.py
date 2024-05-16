@@ -2,6 +2,7 @@
 from random import randint
 
 from Horse import Horse
+from Race import Race
 #from Weather import Hot, Windy, Tropical
 
 horse_names = [

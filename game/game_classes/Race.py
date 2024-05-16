@@ -33,6 +33,9 @@ class Race:
         self.odds = {}
 
 
+    def get_name_of_horses(self):
+        return [horse.name for horse in self.horses]
+
     def get_race_state(self):
         print(self.position)
 
@@ -57,7 +60,7 @@ class Race:
 
     def discrete(self):
         pk = list(self.odds.values())
-        print(pk)
+        #print(pk)
         discrete_rv = rv_discrete(name='Odds', values=(range(6), pk))
         return discrete_rv
 
