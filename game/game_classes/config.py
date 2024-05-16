@@ -2,9 +2,9 @@
 from random import randint
 
 from Horse import Horse
-#from Race import Race
-from Weather import Hot, Windy, Tropical
-
+from Race import Race
+from Weather import *
+from Bet import Bet
 
 horse_names = [
     "Dolly",

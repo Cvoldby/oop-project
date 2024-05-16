@@ -105,10 +105,10 @@ class Race:
         print(list(self.position.values()))
         
         winner = self.check_for_winner()
-
-        winner = self.position[self.check_for_winner()]
-        print(f"The winner is {winner[0]}")
-        return winner
+        if winner > 0:
+            winner = self.position[self.check_for_winner()]
+            print(f"The winner is {winner[0]}")
+            return winner
 
 
     def push_to_database(self):
@@ -128,6 +128,6 @@ if __name__ == "__main__":
 
     print()
     print("start race")
-    test.run_once()
+    test.run_race()
 
 

@@ -4,7 +4,7 @@ This file includes the bet class.
 Every bet needs a race, a horse paticipating in that race.
 
 """
-from game_classes import *
+from Race import Race
 
 class Bet:
     def __init__(self, race: Race) -> None:
@@ -12,6 +12,9 @@ class Bet:
         self.horse = None
 
         self.bet_amount = 0
+
+    def __str__(self) -> str:
+        return f"This bet is {self.bet_amount} on {self.horse} "
 
     def make_bet(self, amount, horse_name):
         self.bet_amount = amount
@@ -30,4 +33,5 @@ class Bet:
 
 if __name__ == "__main__":
     test_bet = Bet(Race())
+    print(test_bet.__str__())
         

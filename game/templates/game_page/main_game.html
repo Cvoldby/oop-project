@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horse Racing Game Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='game_style.css') }}">    
+</head>
+<body>
+    <div class="top-bar">
+        <p>RACE IN PROGRESS</p>
+    </div>
+    <div class="container">
+        <div class="position">
+            <input type="range" min="0" max="100" value="0" id="position1" oninput="updatePosition()">
+        </div>
+        <br>
+        <span id="position1Value">0%</span>
+
+        <div class="position">
+            <input type="range" min="0" max="100" value="0" id="position2" oninput="updatePosition()">
+        </div>
+        <br>
+        <span id="position2Value">0%</span>
+
+        <div class="position">
+            <input type="range" min="0" max="100" value="0" id="position3" oninput="updatePosition()">
+        </div>
+        <br>
+        <span id="position3Value">0%</span>
+
+        <div class="position">
+            <input type="range" min="0" max="100" value="0" id="position4" oninput="updatePosition()">
+        </div>
+        <br>
+        <span id="position4Value">0%</span>
+
+        <div class="position">
+            <input type="range" min="0" max="100" value="0" id="position5" oninput="updatePosition()">
+        </div>
+        <br>
+        <span id="position5Value">0%</span>
+
+        <div class="position">
+            <input type="range" min="0" max="100" value="0" id="position6" oninput="updatePosition()">
+        </div>
+        <br>
+        <span id="position6Value">0%</span>
+
+        <script>
+            function updatePosition() {
+                var position = document.getElementById("position1");
+
+                position.value = level + "%";
+            }
+
+            // Fetch data from server
+            setInterval(function() {
+                fetch('/api/positions')
+                    .then(response => response.json())
+                    .then(data => {
+                        updatePosition(data.level);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
+                    });
+            }, 1000); // Update every second
+        </script>
+    </div>
+</div>
+</body>
