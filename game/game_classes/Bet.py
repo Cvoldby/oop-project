@@ -24,6 +24,9 @@ class Bet:
     def calculate_possible_winnings(self):
         self.race.odds[self.horse] * self.bet_amount
 
+    def push_to_database(self):
+        pass
+
 
 if __name__ == "__main__":
     test_bet = Bet(Race())

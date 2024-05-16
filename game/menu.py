@@ -8,8 +8,8 @@ from markupsafe import escape
 app = Flask(__name__)
 
 
-@app.route("/")
-def hell_world():
-    return "<p>This is a welcome page!</p>"
+@app.route("/home")
+def menu():
+    return render_template("home.html")
 
 

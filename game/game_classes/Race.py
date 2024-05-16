@@ -8,7 +8,7 @@ The following parameters effects the race.
 - Laps
 - 
 """
-
+from time import sleep
 from random import sample
 from scipy.stats import rv_discrete
 
@@ -66,25 +66,53 @@ class Race:
 
 
     def check_for_winner(self):
-        for idx, pos in enumerate(self.position):
-            if pos == self.length_lap:
+        for idx, pos in enumerate(self.position.values()):
+            #print(idx, pos)
+            if pos[1] == self.length_lap:
                 return idx
             
-        return None
+        return -1
 
 
-    def run_once(self):
+    def run_race(self):
         R = self.discrete()
 
-        winner = None
-        while winner == None:
+        winner = -1
+        while winner < 0:
             r1 = R.rvs()
             r2 = R.rvs()
 
+            self.position[r1][1] += 1
+            self.position[r2][1] += 1
 
-
+            print(list(self.position.values()))
+            
             winner = self.check_for_winner()
+            sleep(1)
 
+        winner = self.position[self.check_for_winner()]
+        print(f"The winner is {winner[0]}")
+        return winner
+    
+    def run_once(self):
+        R = self.discrete()
+        r1 = R.rvs()
+        r2 = R.rvs()
+
+        self.position[r1][1] += 1
+        self.position[r2][1] += 1
+
+        print(list(self.position.values()))
+        
+        winner = self.check_for_winner()
+
+        winner = self.position[self.check_for_winner()]
+        print(f"The winner is {winner[0]}")
+        return winner
+
+
+    def push_to_database(self):
+        pass
 
 
 if __name__ == "__main__":
@@ -97,5 +125,9 @@ if __name__ == "__main__":
 
     RV = test.discrete()
     print(RV.rvs())
+
+    print()
+    print("start race")
+    test.run_once()
 
 
